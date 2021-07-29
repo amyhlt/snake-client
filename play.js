@@ -1,24 +1,31 @@
 const net = require("net");
-
-// establishes a connection with the game server
-const connect = function () {
-  const conn = net.createConnection({
-    host: '135.23.223.133',// IP address here,
-    port: 50542// PORT number here,
-  });
-
-  // interpret incoming data as text
-  conn.setEncoding("utf8");
-  conn.on('data', (data) => {
-    console.log('Server says: ', data);
-  });
-  conn.on('connect', () => {
-    console.log("Hello Server!");
-    conn.write('Hello from client!');
-  });
-
-  return conn;
-};
-
+const {connect} = require('./client');
 console.log("Connecting ...");
-connect();
+
+const conn = connect();
+for (let i = 0; i < 10; i++) {
+    setTimeout(()=> {
+      conn.write('Name: Smile') 
+      conn.write('Move: up')
+    }, 500 * i)
+} 
+for (let i = 0; i < 10; i++) {
+  setTimeout(()=> {
+    conn.write('Name: Smile') 
+    conn.write('Move: right')
+  }, 1000 * i)
+} 
+for (let i = 0; i < 10; i++) {
+    setTimeout(()=> {
+      conn.write('Name: Smile') 
+      conn.write('Move: left')
+    }, 1500 * i)
+} 
+
+for (let i = 0; i < 10; i++) {
+    setTimeout(()=> {
+      conn.write('Name: Smile') 
+      conn.write('Move: down')
+    }, 2000 * i)
+} 
+

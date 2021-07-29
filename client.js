@@ -10,15 +10,13 @@ const connect = function () {
     conn.on('data', (data) => {
       console.log('Server says: ', data);
     });
-    conn.Name = "QWE";
+    
     conn.on('connect', () => {
       console.log("Successfully connected to game server!");
-      conn.write('Hello from client!');
-      conn.write(conn.Name)
+      conn.write('Name: Smile') 
     });
     
     return conn;
   };
  
-  console.log("Connecting ...");
-connect();
+module.exports = {connect};
