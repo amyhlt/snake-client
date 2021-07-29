@@ -1,44 +1,33 @@
 const net = require("net");
 const {connect} = require('./client');
+const setupInput = require('./input');
 console.log("Connecting ...");
 
 const conn = connect();
-for (let i = 0; i < 10; i++) {
+for (let i = 0; i < 20; i++) {
     setTimeout(()=> {
       conn.write('Name: Smile') 
       conn.write('Move: up')
-    }, 500 * i)
+    }, 300 * i)
 } 
-for (let i = 0; i < 10; i++) {
+for (let i = 0; i < 20; i++) {
   setTimeout(()=> {
     conn.write('Name: Smile') 
     conn.write('Move: right')
-  }, 1000 * i)
+  }, 500 * i)
 } 
-for (let i = 0; i < 10; i++) {
+for (let i = 0; i < 20; i++) {
     setTimeout(()=> {
       conn.write('Name: Smile') 
       conn.write('Move: left')
-    }, 1500 * i)
+    }, 700 * i)
 } 
 
-for (let i = 0; i < 10; i++) {
+for (let i = 0; i < 20; i++) {
     setTimeout(()=> {
       conn.write('Name: Smile') 
       conn.write('Move: down')
-    }, 2000 * i)
+    }, 900 * i)
 } 
-const setupInput = function () {
-  const stdin = process.stdin;
-  stdin.setRawMode(true);
-  stdin.setEncoding("utf8");
-  stdin.resume();
-  stdin.on("data", handleUserInput);
-  return stdin;
-};
-const handleUserInput = function(key) {
-  if (key === '\u0003') {
-    process.exit();
-  }
-}
+
 setupInput();
